@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 
-class row extends React.Component {
+class Row extends React.Component {
 
   constructor(props, context) {
     super(props, context);

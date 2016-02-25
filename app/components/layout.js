@@ -5,6 +5,29 @@ import Row from '../components/row'
 
 class Layout extends React.Component {
 
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      processedData: {},
+      sampleIndex:0
+    };
+  }
+
+  componentWillMount() {
+    // generic ajax call to backend 
+    // if call fails - retry,
+    // if theres no data.
+
+    // success data - map no a client side
+    // model - correspnding to data expected
+
+    this.getSamples(0);
+  },
+
+  componentWillUpdate() {
+
+  }
+
   componentDidMount(){
     // console.profile();
     this.large();
@@ -32,7 +55,8 @@ class Layout extends React.Component {
 
   getProfileData() {
     return ([
-      {
+      { // requset id 
+        // timestamp 
         event_type: 'cpu_sample',
         timestamp: 24022015070000100,
         payload: [
@@ -112,7 +136,7 @@ class Layout extends React.Component {
 
   small() {
     for(var i=0; i<30000; i++){
-      Math.pow();
+      Math.pow(i,2);
     }
   }
 
@@ -126,6 +150,24 @@ class Layout extends React.Component {
     for(var i=0; i<30000; i++){
       Math.cbrt(i);
     }
+  }
+
+  getSamples() {
+    $.ajax({
+      url: '/api/sample/' + this.state.sampleIndex,
+      type: 'GET',
+      success: function(data){
+        var newSampleIndex = this.state.sampleindex + 100
+        this.setState({sampleindex: })
+      },
+      complete: function(data){
+
+      },
+      error: function() {
+
+      }
+
+    })
   }
 
 }
