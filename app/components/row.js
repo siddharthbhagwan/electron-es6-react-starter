@@ -102,4 +102,4 @@ class Row extends React.Component {
   }
 }
 
-export default row;
+export default Row;

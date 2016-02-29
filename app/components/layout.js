@@ -8,8 +8,8 @@ class Layout extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      processedData: {},
-      sampleIndex:0
+      processedData: {}
+      //sampleIndex:0
     };
   }
 
@@ -21,11 +21,7 @@ class Layout extends React.Component {
     // success data - map no a client side
     // model - correspnding to data expected
 
-    this.getSamples(0);
-  },
-
-  componentWillUpdate() {
-
+    // this.getSamples(0);
   }
 
   componentDidMount(){
@@ -153,12 +149,13 @@ class Layout extends React.Component {
   }
 
   getSamples() {
+    that = this;
     $.ajax({
       url: '/api/sample/' + this.state.sampleIndex,
       type: 'GET',
       success: function(data){
-        var newSampleIndex = this.state.sampleindex + 100
-        this.setState({sampleindex: })
+        var newSampleIndex = that.state.sampleindex + 100;
+        this.setState({sampleindex: newSampleIndex});
       },
       complete: function(data){
 
